@@ -1,0 +1,94 @@
+{
+	"name": "dataflow2",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "SqlServerTable5",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText8",
+						"type": "DatasetReference"
+					},
+					"name": "sink1",
+					"rejectedDataLinkedService": {
+						"referenceName": "AzureBlobStorage1",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "parse1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          entry_id as long,",
+				"          entity_id as string,",
+				"          source_id as string,",
+				"          time as timestamp,",
+				"          field_values as string,",
+				"          location as string,",
+				"          source_type as string,",
+				"          tags as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     limit: 1000,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table',",
+				"     partitionBy('hash', 1)) ~> source1",
+				"source1 derive(data = @(field_values=field_values)) ~> derivedColumn1",
+				"derivedColumn1 parse(demo = data.field_values ? (Area as string,",
+				"          Area_Unique as string,",
+				"          Line as string,",
+				"          Line_Unique as string,",
+				"          PartType as string,",
+				"          Shift as string,",
+				"          ShiftDate as string),",
+				"     format: 'json',",
+				"     documentForm: 'singleDocument') ~> parse1",
+				"parse1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Line as string,",
+				"          Line_Unique as string,",
+				"          PartType as string,",
+				"          Shift as string,",
+				"          ShiftDate as string,",
+				"          entry_id as string,",
+				"          entity_id as string,",
+				"          source_id as string,",
+				"          timestamp as string,",
+				"          location as string",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          Line = demo.Line,",
+				"          Line_Unique = demo.Line_Unique,",
+				"          PartType = demo.PartType,",
+				"          Shift = demo.Shift,",
+				"          ShiftDate = demo.ShiftDate,",
+				"          entry_id,",
+				"          entity_id,",
+				"          source_id,",
+				"          timestamp = time,",
+				"          location",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}

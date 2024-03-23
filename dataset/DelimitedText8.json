@@ -1,0 +1,65 @@
+{
+	"name": "DelimitedText8",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "TRAIL2.csv",
+				"container": "source"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Line",
+				"type": "String"
+			},
+			{
+				"name": "Line_Unique",
+				"type": "String"
+			},
+			{
+				"name": "PartType",
+				"type": "String"
+			},
+			{
+				"name": "Shift",
+				"type": "String"
+			},
+			{
+				"name": "ShiftDate",
+				"type": "String"
+			},
+			{
+				"name": "entry_id",
+				"type": "String"
+			},
+			{
+				"name": "entity_id",
+				"type": "String"
+			},
+			{
+				"name": "source_id",
+				"type": "String"
+			},
+			{
+				"name": "timestamp",
+				"type": "String"
+			},
+			{
+				"name": "location",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

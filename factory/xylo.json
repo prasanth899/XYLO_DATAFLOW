@@ -1,0 +1,9 @@
+{
+	"name": "xylo",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "45dfb127-de28-450f-bb40-5db4f4abfe14",
+		"tenantId": "1ca9863d-187e-4766-9843-09ea31c6c6ab"
+	}
+}

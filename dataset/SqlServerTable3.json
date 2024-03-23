@@ -1,0 +1,52 @@
+{
+	"name": "SqlServerTable3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "entry_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "entity_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "source_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "time",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "field_values",
+				"type": "nvarchar"
+			},
+			{
+				"name": "location",
+				"type": "nvarchar"
+			},
+			{
+				"name": "source_type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "tags",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "stream"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
