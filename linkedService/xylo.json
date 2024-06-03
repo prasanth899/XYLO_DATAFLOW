@@ -1,0 +1,12 @@
+{
+	"name": "xylo",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "GitHub",
+		"typeProperties": {
+			"username": "prasanth899",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDdCMEI0REY5LUUwNjItNDk1MS05NkEzLTAwNDM4RDNBOUQxMF8xMGU2NWNmNy05OTU3LTRiY2QtOGIwMS01MmYzNWRhODUwOWIiDQp9"
+		}
+	}
+}
