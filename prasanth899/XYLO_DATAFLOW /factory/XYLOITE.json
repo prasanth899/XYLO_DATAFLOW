@@ -1,0 +1,9 @@
+{
+	"name": "XYLOITE",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "2fe2000d-3fbc-4b26-9709-24ede68cce18",
+		"tenantId": "202146a1-7bc3-46c8-8042-750c895e4a8f"
+	}
+}
